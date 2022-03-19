@@ -3,6 +3,10 @@ const { utils } = require("ethers");
 const fs = require("fs");
 const chalk = require("chalk");
 
+//import glob from 'glob';
+const glob = require("glob");
+const path = require("path");
+
 require("@nomiclabs/hardhat-waffle");
 require("@tenderly/hardhat-tenderly");
 
@@ -14,11 +18,11 @@ require("@nomiclabs/hardhat-etherscan");
 
 console.log('tomo');
 
-//if (!process.env.SKIP_LOAD) {
-//  glob.sync('./tasks/**/*.ts').forEach(function (file) {
-//    require(path.resolve(file));
-//  });
-//}
+if (!process.env.SKIP_LOAD) {
+  glob.sync('./tasks/**/*.ts').forEach(function (file) {
+    require(path.resolve(file));
+  });
+}
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 

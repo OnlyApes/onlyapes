@@ -74,8 +74,6 @@
     "@typechain/ethers-v5": "8.0.5",
     "@typechain/hardhat": "3.0.0",
     "@types/node": "16.11.11",
-    "@typescript-eslint/eslint-plugin": "5.5.0",
-    "@typescript-eslint/parser": "5.5.0",
 
     "husky": "^7.0.2",
     "ts-node": "10.4.0"
