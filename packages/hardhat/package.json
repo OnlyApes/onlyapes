@@ -11,11 +11,9 @@
     "eslint-plugin-prettier": "^3.4.0"
   },
   "dependencies": {
-    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
     "@nomiclabs/hardhat-waffle": "^2.0.0",
-    "@openzeppelin/contracts": "^4.4.2",
+    "@openzeppelin/contracts": "^4.5.0",
     "@tenderly/hardhat-tenderly": "^1.0.10",
-    "@nomiclabs/hardhat-etherscan": "^3.0.1",
     "chai": "^4.2.0",
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
@@ -26,7 +24,19 @@
     "hardhat-gas-reporter": "^1.0.4",
     "node-watch": "^0.7.0",
     "qrcode-terminal": "^0.12.0",
-    "ramda": "^0.27.1"
+    "ramda": "^0.27.1",
+
+    "@nomiclabs/hardhat-ethers": "2.0.2",
+    "@nomiclabs/hardhat-etherscan": "2.1.8",
+    "@typechain/ethers-v5": "8.0.5",
+    "@typechain/hardhat": "3.0.0",
+    "@types/node": "16.11.11",
+    "@typescript-eslint/eslint-plugin": "5.5.0",
+    "@typescript-eslint/parser": "5.5.0",
+
+    "husky": "^7.0.2",
+    "ts-node": "10.4.0"
+
   },
   "scripts": {
     "chain": "hardhat node --network hardhat --no-deploy",
@@ -35,6 +45,9 @@
     "compile": "hardhat compile",
     "deploy": "hardhat deploy --export-all ../react-app/src/contracts/hardhat_contracts.json",
     "postdeploy": "hardhat run scripts/publish.js",
+    "unpause": "hardhat run deploy/unpause.ts",
+    "fulldeploy": "hardhat run deploy/full-deploy.ts --network localhost",
+    "full-deploy-local": "hardhat full-deploy --network localhost",
     "watch": "node scripts/watch.js",
     "accounts": "hardhat accounts",
     "balance": "hardhat balance",

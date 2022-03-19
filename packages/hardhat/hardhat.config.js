@@ -12,6 +12,14 @@ require("hardhat-gas-reporter");
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 
+console.log('tomo');
+
+//if (!process.env.SKIP_LOAD) {
+//  glob.sync('./tasks/**/*.ts').forEach(function (file) {
+//    require(path.resolve(file));
+//  });
+//}
+
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
 /*
@@ -271,6 +279,18 @@ module.exports = {
           },
         },
       },
+      {
+        version: '0.8.10',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+            details: {
+              yul: true,
+            },
+          },
+        },
+      },      
       {
         version: "0.6.7",
         settings: {
