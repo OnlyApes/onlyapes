@@ -1,3 +1,6 @@
+import { task } from "hardhat/config";
+import "@nomiclabs/hardhat-waffle";
+
 require("dotenv").config();
 const { utils } = require("ethers");
 const fs = require("fs");
@@ -7,7 +10,7 @@ const chalk = require("chalk");
 const glob = require("glob");
 const path = require("path");
 
-require("@nomiclabs/hardhat-waffle");
+//require("@nomiclabs/hardhat-waffle");
 require("@tenderly/hardhat-tenderly");
 
 require("hardhat-deploy");
@@ -366,7 +369,7 @@ task("fundedwallet", "Create a wallet (pk) link and fund it with deployer?")
     // SEND USING LOCAL DEPLOYER MNEMONIC IF THERE IS ONE
     // IF NOT SEND USING LOCAL HARDHAT NODE:
     if (localDeployerMnemonic) {
-      let deployerWallet = new ethers.Wallet.fromMnemonic(
+      let deployerWallet = new (ethers.Wallet.fromMnemonic as any)(
         localDeployerMnemonic
       );
       deployerWallet = deployerWallet.connect(ethers.provider);
@@ -519,6 +522,7 @@ task(
       const qrcode = require("qrcode-terminal");
       qrcode.generate(address);
       console.log("‍📬 Deployer Account is " + address);
+      /*
       for (const n in config.networks) {
         // console.log(config.networks[n],n)
         try {
@@ -537,6 +541,7 @@ task(
           }
         }
       }
+     */
     } catch (err) {
       console.log(`--- Looks like there is no mnemonic file created yet.`);
       console.log(
@@ -621,10 +626,12 @@ task("send", "Send ETH")
       chainId: network.config.chainId,
     };
 
+    /*
     if (taskArgs.data !== undefined) {
       txRequest.data = taskArgs.data;
       debug(`Adding data to payload: ${txRequest.data}`);
     }
+   */
     debug(txRequest.gasPrice / 1000000000 + " gwei");
     debug(JSON.stringify(txRequest, null, 2));
 
